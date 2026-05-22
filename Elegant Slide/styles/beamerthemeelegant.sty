@@ -1,0 +1,34 @@
+\mode<presentation>
+
+\mode<presentation>
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Style passing argument
+\DeclareOptionBeamer{style}{
+    \PassOptionsToPackage{style=#1}{styles/beamercolorthemeelegant}
+}
+\ExecuteOptionsBeamer{style=blue}
+\ProcessOptionsBeamer
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Settings
+\usecolortheme{elegant}
+\usefonttheme{elegant}
+\useinnertheme{elegant}
+\useoutertheme{elegant}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Navigation Bar
+\setbeamertemplate{navigation symbols}{}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Margins
+\makeatletter
+    \setlength\beamer@paperwidth{20.00cm}%
+    \setlength\beamer@paperheight{13.00cm}%
+    \geometry{papersize={\beamer@paperwidth,\beamer@paperheight}}
+\makeatother
+\setbeamersize{text margin left=15mm,text margin right=15mm} 
+
+\mode<all>

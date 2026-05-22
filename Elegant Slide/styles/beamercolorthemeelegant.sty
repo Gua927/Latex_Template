@@ -1,0 +1,103 @@
+\mode<presentation>
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Colors
+\RequirePackage{xcolor} 
+
+%Burgundy{80013F} %{B02A30} %{F209B1}
+%Teal {008B8B} % Burnt orange{CC5500} %{006400} %{228B22}
+\definecolor{Gray}{HTML}{808080}
+
+% Main color
+\DeclareOptionBeamer{style}{\def\beamer@mytheme@style{#1}}
+\ExecuteOptionsBeamer{style=lecture} %default
+\ProcessOptionsBeamer
+
+\def\beamer@mytheme@stylegold{gold}%
+\def\beamer@mytheme@styleorange{orange}%
+\def\beamer@mytheme@stylered{red}%
+\def\beamer@mytheme@stylegray{gray}%
+
+\ifx\beamer@mytheme@style\beamer@mytheme@stylegold%
+	% Gold
+    \definecolor{primary}{HTML}{08457E}
+    \definecolor{secondary}{HTML}{B8860B}
+    \definecolor{tertiary}{HTML}{B22222}
+    \definecolor{text}{HTML}{000000}
+    \setbeamercolor*{framesubtitle}{fg=secondary,bg=white}
+	\else\ifx\beamer@mytheme@style\beamer@mytheme@stylered%
+		% Red
+        \definecolor{primary}{HTML}{08457E}
+        \definecolor{secondary}{HTML}{B02A30}
+        \definecolor{tertiary}{HTML}{006400}
+        \definecolor{text}{HTML}{000000}
+        \setbeamercolor*{framesubtitle}{fg=secondary,bg=white}
+    \else\ifx\beamer@mytheme@style\beamer@mytheme@styleorange%
+ 		% Orange
+            \definecolor{primary}{HTML}{08457E}
+            \definecolor{secondary}{HTML}{CC5500}
+            \definecolor{tertiary}{HTML}{008B8B}
+            \definecolor{text}{HTML}{000000}
+            \setbeamercolor*{framesubtitle}{fg=secondary,bg=white}
+            
+	\else\ifx\beamer@mytheme@style\beamer@mytheme@stylegray%
+ 		% Gray
+        \definecolor{primary}{HTML}{08457E}
+        \definecolor{secondary}{HTML}{E60073} 
+        \definecolor{tertiary}{HTML}{33CCCC}
+        \definecolor{text}{HTML}{424242}
+        \setbeamercolor*{framesubtitle}{fg=Gray,bg=white}
+
+    \else% 
+    	% lecture by default
+            \definecolor{primary}{HTML}{08457E}
+            \definecolor{secondary}{HTML}{F209B1}
+            \definecolor{tertiary}{HTML}{33CCCC}
+            \definecolor{text}{HTML}{000000}
+            \setbeamercolor*{framesubtitle}{fg=secondary,bg=white}
+    \fi\fi\fi%
+\fi%
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Colours
+
+\setbeamercolor*{background canvas}{bg=white}
+\setbeamercolor*{footer}{fg=Gray}
+\setbeamercolor*{footer text}{fg=primary}
+\setbeamercolor*{footline}{fg=Gray}
+\setbeamercolor*{frametitle}{fg=primary,bg=white}
+\setbeamercolor*{title}{fg=primary,bg=white}
+\setbeamercolor*{author}{fg=text,bg=white}
+\setbeamercolor*{part title}{fg=primary}
+\setbeamercolor*{caption name}{fg=primary}
+\setbeamercolor*{section in toc}{fg=black}
+
+\setbeamercolor*{secondary}{fg=secondary!10,bg=white}
+\setbeamercolor*{alerted text}{fg=secondary,bg=white}
+\setbeamercolor*{example text}{fg=tertiary,bg=white}
+\setbeamercolor*{normal text}{fg=text,bg=white}
+\setbeamercolor*{itemize item}{fg=primary}
+\setbeamercolor*{itemize subitem}{fg=primary}
+\setbeamercolor*{itemize subsubitem}{fg=primary}
+\setbeamercolor*{enumerate item}{fg=primary}
+\setbeamercolor*{enumerate subitem}{fg=primary}
+\setbeamercolor*{enumerate subsubitem}{fg=primary}
+\setbeamercolor*{description item}{fg=primary}
+\setbeamercolor*{caption name}{fg=text}
+\setbeamercolor{button}{bg=primary,fg=white}
+
+% Default block
+\setbeamercolor{block title}{bg=white, fg=primary}%
+\setbeamercolor{block body}{fg=text}%
+\setbeamercolor{block title alerted}{bg=white, fg=secondary}%
+\setbeamercolor{block body alerted}{bg=white, fg=text}%
+\setbeamercolor{block title example}{bg=white, fg=tertiary}%
+\setbeamercolor{block body example}{bg=white, fg=text}%
+% Bibliography
+\setbeamercolor*{bibliography item}{fg=primary}
+
+\setbeamercolor*{bibliography entry author}{fg=primary}
+\setbeamercolor*{bibliography entry title}{fg=text}
+\setbeamercolor*{bibliography entry location}{fg=text}
+\setbeamercolor*{bibliography entry note}{fg=text}
+
+\mode<all>

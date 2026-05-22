@@ -1,0 +1,165 @@
+\mode<presentation>
+
+\RequirePackage{tikz}
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Table of Content
+
+\makeatletter
+\AtBeginPart{%
+  \beamer@tocsectionnumber=0\relax
+  \setcounter{section}{0}
+}
+\makeatother
+
+\newcounter{sectionpage}
+
+\makeatletter
+\newcommand \Dotfill {\leavevmode \cleaders \hb@xt@ 0.8em{\hss .\hss }\hfill \kern \z@}
+\makeatother
+
+\makeatletter
+
+\patchcmd{\beamer@section}
+    {\addtocontents{toc}{\protect\beamer@sectionintoc{\the\c@section}{#2}{\the\c@page}{\the\c@part}{\the\beamer@tocsectionnumber}}}
+    {\setcounter{sectionpage}{\insertframenumber}\stepcounter{sectionpage}%
+     \addtocontents{toc}{\protect\beamer@sectionintoc{\the\c@section}{#2\Dotfill\thesectionpage}{\the\c@page}{\the\c@part}{\the\beamer@tocsectionnumber}}}
+    {}{}
+    
+\patchcmd{\beamer@subsection}
+    {\addtocontents{toc}{\protect\beamer@subsectionintoc{\the\c@section}{\the\c@subsection}{#2}{\the\c@page}{\the\c@part}{\the\beamer@tocsectionnumber}}}
+    {\setcounter{sectionpage}{\insertframenumber}\stepcounter{sectionpage}%
+     \addtocontents{toc}{\protect\beamer@subsectionintoc{\the\c@section}{\the\c@subsection}{#2\Dotfill\thesectionpage}{\the\c@page}{\the\c@part}{\the\beamer@tocsectionnumber}}}
+    {}{}
+    
+\patchcmd{\beamer@subsubsection}
+    {\addtocontents{toc}{\protect\beamer@subsubsectionintoc{\the\c@section}{\the\c@subsection}{\the\c@subsubsection}{#2}{\the\c@page}{\the\c@part}{\the\beamer@tocsectionnumber}}}
+    {\setcounter{sectionpage}{\insertframenumber}\stepcounter{sectionpage}%
+     \addtocontents{toc}{\protect\beamer@subsubsectionintoc{\the\c@section}{\the\c@subsection}{\the\c@subsubsection}{#2\Dotfill\thesectionpage}{\the\c@page}{\the\c@part}{\the\beamer@tocsectionnumber}}}
+    {}{}
+
+\makeatother
+
+\tikzset{section number/.style={
+    minimum size=0.4em,
+    text=black,
+    inner sep=1.5pt,
+  },
+  section/.style={
+    draw=none,
+    rectangle,
+    minimum height=1em,
+    minimum width=0.8\textwidth,
+    text width=0.8\textwidth,
+    text=black,
+    align=left
+  },
+  subsection number/.style={
+    minimum size=0.4em,
+    text=black,
+    inner sep=1.5pt,
+  },
+  subsection/.style={
+    draw=none,
+    rectangle,
+    minimum height=1em,
+    minimum width=0.8\textwidth,
+    text width=0.8\textwidth,
+    text=black,
+    align=left
+  }
+  ,
+  subsubsection number/.style={
+    minimum size=0.4em,
+    text=black,
+    inner sep=1.5pt,
+  },
+  subsubsection/.style={
+    draw=none,
+    rectangle,
+    minimum height=1em,
+    minimum width=0.8\textwidth,
+    text width=0.8\textwidth,
+    text=black,
+    align=left
+  }
+}
+
+\setbeamertemplate{section in toc}{\leavevmode {\bfseries \color{black}{\inserttocsectionnumber}}\hspace{0.3cm} \textbf{\color{black}{\inserttocsection}}\vspace{0.3em}}
+
+\setbeamertemplate{subsection in toc}{\leavevmode\leftskip=4.2em\rlap{\hskip-2em \small \inserttocsectionnumber.\inserttocsubsectionnumber}\hspace{0.2cm}\small\inserttocsubsection\par \vspace{0.3em}}
+
+\setbeamertemplate{subsubsection in toc}{\leavevmode\leftskip=8.2em\rlap{\hskip-2em \small \inserttocsectionnumber.\inserttocsubsectionnumber.\inserttocsubsubsectionnumber}\hspace{0.4cm}\small\inserttocsubsubsection\par \vspace{0.3em}}
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Example
+\newenvironment{emphasize}[1]{
+	\textcolor{primary}{#1}
+}
+
+\newenvironment{example}[1]{
+	\textcolor{tertiary}{#1}
+}
+
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Remove font dependency of blocks
+\setbeamertemplate{block begin}
+{
+  \par\vskip\medskipamount%
+  \begin{beamercolorbox}[colsep*=2mm]{block title}
+    \usebeamerfont*{block title}\insertblocktitle%
+  \end{beamercolorbox}%
+  {\parskip0pt\par}%
+  \ifbeamercolorempty[bg]{block title}
+  {}
+  {\ifbeamercolorempty[bg]{block body}{}{\nointerlineskip\vskip-0.5pt}}%
+  \usebeamerfont{block body}%
+  \begin{beamercolorbox}[colsep*=2mm,vmode]{block body}%
+    \ifbeamercolorempty[bg]{block body}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+}
+
+\setbeamertemplate{block example begin}
+{
+  \par\vskip\medskipamount%
+  \begin{beamercolorbox}[colsep*=2mm]{block title example}
+    \usebeamerfont*{block title example}\insertblocktitle%
+  \end{beamercolorbox}%
+  {\parskip0pt\par}%
+  \ifbeamercolorempty[bg]{block title example}
+  {}
+  {\ifbeamercolorempty[bg]{block body example}{}{\nointerlineskip\vskip-0.5pt}}%
+  \usebeamerfont{block body example}%
+  \begin{beamercolorbox}[colsep*=2mm,vmode]{block body example}%
+    \ifbeamercolorempty[bg]{block body example}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+}
+
+\setbeamertemplate{block alerted begin}
+{
+  \par\vskip\medskipamount%
+  \begin{beamercolorbox}[colsep*=2mm]{block title alerted}
+    \usebeamerfont*{block title alerted}\insertblocktitle%
+  \end{beamercolorbox}%
+  {\parskip0pt\par}%
+  \ifbeamercolorempty[bg]{block title alerted}
+  {}
+  {\ifbeamercolorempty[bg]{block body alerted}{}{\nointerlineskip\vskip-0.5pt}}%
+  \usebeamerfont{block body alerted}%
+  \begin{beamercolorbox}[colsep*=2mm,vmode]{block body alerted}%
+    \ifbeamercolorempty[bg]{block body alerted}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+}
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Figures
+\setbeamertemplate{caption label separator}[period]
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% List
+\setbeamertemplate{itemize subitem}[circle]
+\setbeamerfont{itemize/enumerate subbody}{size=\normalfont}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Bibliography
+
+\mode<all>

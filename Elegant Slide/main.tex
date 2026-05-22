@@ -1,0 +1,213 @@
+% Copyright (c) 2022 by Lars Spreng
+% This work is licensed under the Creative Commons Attribution 4.0 International License.
+% To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% You can add your packages and commands to the loadslides.tex file.
+% The files in the folder "styles" can be modified to change the layout and design of your slides.
+% I have included examples on how to use the template below.
+% Some of these examples are taken from the Metropolis template.
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+\documentclass[
+11pt,notheorems,hyperref={pdfauthor=whatever}
+]{beamer}
+
+\input{loadslides.tex} % Loads packages and some defined commands
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Metadata
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\title[
+% Text entered here will appear in the bottom middle
+]{Your Presentation Title}
+
+\subtitle{Subtitle or Event Name}
+
+\author[
+% Text entered here will appear in the bottom left corner
+]{
+    Your Name
+}
+
+\institute{
+    Your Institution, \\
+    Your Department}
+\date{\today}
+
+\begin{document}
+
+% Generate title page
+{
+\setbeamertemplate{footline}{}
+\begin{frame}
+  \titlepage
+\end{frame}
+}
+\addtocounter{framenumber}{-1}
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Outline / Table of Contents
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Outline / Table of Contents
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\begin{frame}{Outline}
+    \tableofcontents[part=1]
+\end{frame}
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Part I: Example Section
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\makepart{First Part}
+
+\section{Example Section}
+
+\subsection{Basic Blocks}
+\begin{frame}{Basic Blocks}{Block Environments}
+\begin{columns}[T,onlytextwidth]
+    \column{0.48\textwidth}
+    \begin{block}{Standard Block}
+        This is a standard block. Use it for general content.
+    \end{block}
+
+    \column{0.48\textwidth}
+    \begin{exampleblock}{Example Block}
+        This is an example block. Use it for examples and illustrations.
+    \end{exampleblock}
+\end{columns}
+
+\vspace{0.5cm}
+
+\begin{alertblock}{Alert Block}
+    This is an alert block. Use it to highlight important warnings or conclusions.
+\end{alertblock}
+\end{frame}
+
+\subsection{Lists and Columns}
+\begin{frame}{Lists and Columns}{Common Layout Patterns}
+\begin{columns}[T,onlytextwidth]
+    \column{0.48\textwidth}
+    \begin{block}{Itemize}
+        \begin{itemize}
+            \item First bullet point
+            \item Second bullet point
+            \item \textbf{Bold} and \textit{italic} text
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Enumerate}
+        \begin{enumerate}
+            \item First step
+            \item Second step
+            \item Third step
+        \end{enumerate}
+    \end{block}
+
+    \column{0.48\textwidth}
+    \begin{block}{Nested Lists}
+        \begin{itemize}
+            \item Top-level item
+            \begin{itemize}
+                \item Sub-item one
+                \item Sub-item two
+            \end{itemize}
+            \item Another top-level item
+        \end{itemize}
+    \end{block}
+\end{columns}
+\end{frame}
+
+\subsection{Figures and Tables}
+\begin{frame}{Figures and Tables}{Including Visual Content}
+\begin{columns}[T,onlytextwidth]
+    \column{0.48\textwidth}
+    \begin{figure}
+        \centering
+        % \includegraphics[width=\textwidth]{assets/your-image.png}
+        \fbox{\parbox{0.8\textwidth}{\centering\vspace{2cm}Image Placeholder\vspace{2cm}}}
+        \caption{Example figure caption.}
+    \end{figure}
+
+    \column{0.48\textwidth}
+    \begin{table}
+        \centering
+        \begin{tabular}{lcc}
+            \toprule
+            Method & Accuracy & Speed \\
+            \midrule
+            A & 0.95 & Fast \\
+            B & 0.92 & Slow \\
+            \bottomrule
+        \end{tabular}
+        \caption{Example table.}
+    \end{table}
+\end{columns}
+\end{frame}
+
+\subsection{Mathematics}
+\begin{frame}{Mathematics}{Equations and Theorems}
+\begin{block}{Key Equation}
+    The standard diffusion forward process:
+    \[
+        q(z_t \mid z_0) = \mathcal{N}(\alpha_t z_0, \sigma_t^2 \mathbf{I})
+    \]
+\end{block}
+
+\begin{theorem}[Example Theorem]
+    Let $X$ be a random variable. Then $\E[X]$ exists if $\E[|X|] < \infty$.
+\end{theorem}
+
+\begin{proof}
+    This follows directly from the definition of expectation.
+\end{proof}
+\end{frame}
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Part II: Another Part
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\makepart{Second Part}
+
+\section{Advanced Features}
+
+\subsection{Overlays}
+\begin{frame}{Overlays}{Step-by-step Reveals}
+\begin{itemize}
+    \item<1-> First point appears on slide 1
+    \item<2-> Second point appears on slide 2
+    \item<3-> Third point appears on slide 3
+\end{itemize}
+
+\vspace{0.5cm}
+
+\begin{block}{Dynamic Content}<2->
+    This block appears from slide 2 onward.
+\end{block}
+\end{frame}
+
+\subsection{Split Content}
+\begin{frame}{Split Content}{Side-by-side Layout}
+\begin{columns}[T,onlytextwidth]
+    \column{0.55\textwidth}
+    \begin{block}{Left Column}
+        \begin{itemize}
+            \item Main text and explanations go here.
+            \item Keep it concise for slides.
+            \item Use bullet points for readability.
+        \end{itemize}
+    \end{block}
+
+    \column{0.39\textwidth}
+    \begin{alertblock}{Key Takeaway}
+        Summarize the most important point here.
+    \end{alertblock}
+\end{columns}
+\end{frame}
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% References
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\begin{frame}[allowframebreaks]{References}
+    \printbibliography
+\end{frame}
+
+\end{document}

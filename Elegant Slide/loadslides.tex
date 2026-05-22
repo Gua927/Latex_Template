@@ -1,0 +1,232 @@
+
+% Copyright (c) 2022 by Lars Spreng
+% This work is licensed under the Creative Commons Attribution 4.0 International License.
+% To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Add your packages and commands to this file
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Fonts
+\RequirePackage{newtxtext}
+\RequirePackage{newtxmath}
+\usefonttheme{serif}
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+
+
+\usepackage{styles/elegantmacros}
+\usefolder{styles}
+\usetheme[style=Orange]{elegant}
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% NeurIPS-like academic slide style
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\definecolor{nipsblack}{HTML}{111111}
+\definecolor{nipsdarkgray}{HTML}{333333}
+\definecolor{nipsgray}{HTML}{666666}
+\definecolor{nipsmidgray}{HTML}{D9D9D9}
+\definecolor{nipslightgray}{HTML}{F5F5F5}
+\definecolor{nipsblue}{HTML}{1F4E79}
+\definecolor{nipsbluebg}{HTML}{EDF2F7}
+
+\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{normal text}{fg=nipsblack,bg=white}
+\setbeamercolor{frametitle}{fg=nipsblack,bg=white}
+\setbeamercolor{framesubtitle}{fg=nipsgray,bg=white}
+\setbeamercolor{title}{fg=nipsblack,bg=white}
+\setbeamercolor{subtitle}{fg=nipsgray,bg=white}
+\setbeamercolor{author}{fg=nipsblack,bg=white}
+\setbeamercolor{institute}{fg=nipsgray,bg=white}
+\setbeamercolor{date}{fg=nipsgray,bg=white}
+\setbeamercolor{part title}{fg=nipsblack,bg=white}
+\setbeamercolor{section in toc}{fg=nipsblack,bg=white}
+\setbeamercolor{subsection in toc}{fg=nipsgray,bg=white}
+\setbeamercolor{caption name}{fg=nipsdarkgray,bg=white}
+\setbeamercolor{caption}{fg=nipsgray,bg=white}
+\setbeamercolor{itemize item}{fg=nipsblack}
+\setbeamercolor{itemize subitem}{fg=nipsgray}
+\setbeamercolor{enumerate item}{fg=nipsblack}
+\setbeamercolor{alerted text}{fg=nipsblue}
+
+\setbeamercolor{block title}{fg=nipsblack,bg=nipslightgray}
+\setbeamercolor{block body}{fg=nipsblack,bg=nipslightgray}
+\setbeamercolor{block title alerted}{fg=white,bg=nipsdarkgray}
+\setbeamercolor{block body alerted}{fg=nipsblack,bg=nipslightgray}
+\setbeamercolor{block title example}{fg=nipsblack,bg=nipsbluebg}
+\setbeamercolor{block body example}{fg=nipsblack,bg=nipsbluebg}
+
+\setbeamerfont{title}{family=\rmfamily,series=\bfseries,size=\LARGE}
+\setbeamerfont{subtitle}{family=\rmfamily,series=\normalfont,size=\large}
+\setbeamerfont{frametitle}{family=\rmfamily,series=\bfseries,size=\Large}
+\setbeamerfont{framesubtitle}{family=\rmfamily,series=\normalfont,size=\normalsize}
+\setbeamerfont{author}{family=\rmfamily,series=\normalfont,size=\normalsize}
+\setbeamerfont{institute}{family=\rmfamily,size=\small}
+\setbeamerfont{date}{family=\rmfamily,size=\small}
+\setbeamerfont{block title}{family=\rmfamily,series=\bfseries,size=\normalsize}
+\setbeamerfont{block body}{family=\rmfamily,size=\small}
+\setbeamerfont{caption}{family=\rmfamily,size=\scriptsize}
+\setbeamerfont{footline}{family=\rmfamily,size=\scriptsize}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize item}{\raisebox{0.15ex}{\scriptsize$\blacktriangleright$}}
+\setbeamertemplate{itemize subitem}{\raisebox{0.15ex}{\tiny$\bullet$}}
+\setbeamertemplate{enumerate item}{\insertenumlabel.}
+\setbeamertemplate{caption label separator}[period]
+
+\setbeamertemplate{frametitle}{%
+  \vspace{0.32cm}%
+  {\usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}\insertframetitle\par}%
+  \ifx\insertframesubtitle\empty\else
+    \vspace{0.02cm}{\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\par}%
+  \fi
+  \vspace{0.08cm}%
+  {\color{nipsmidgray}\rule{\textwidth}{0.4pt}}%
+  \vspace{0.18cm}%
+}
+
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.4ex,dp=1.2ex,leftskip=1.2cm,rightskip=1.2cm]{normal text}%
+      {\usebeamerfont{footline}\color{nipsgray}\insertshortauthor\hfill\insertshorttitle\hfill\insertframenumber/\inserttotalframenumber}%
+    \end{beamercolorbox}%
+  }%
+}
+
+\setbeamertemplate{title page}{%
+  \vspace{1.2cm}
+  {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}
+  \vspace{0.25cm}
+  {\color{nipsmidgray}\rule{0.82\textwidth}{0.5pt}\par}
+  \vspace{0.35cm}
+  {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}
+  \vfill
+  {\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor\par}
+  \vspace{0.15cm}
+  {\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute\par}
+  \vspace{0.25cm}
+  {\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate\par}
+  \vspace{0.6cm}
+}
+
+\setbeamertemplate{part page}{%
+  \centering
+  \vfill
+  {\usebeamerfont{frametitle}\usebeamercolor[fg]{part title}\insertpart\par}
+  \vspace{0.2cm}
+  {\color{nipsmidgray}\rule{0.46\textwidth}{0.5pt}}
+  \vfill
+}
+
+\setbeamertemplate{block begin}{%
+  \par\vskip0.45em%
+  \begin{beamercolorbox}[sep=0.65ex,leftskip=0.6em,rightskip=0.6em]{block title}%
+    \usebeamerfont*{block title}\insertblocktitle%
+  \end{beamercolorbox}%
+  \nointerlineskip%
+  \begin{beamercolorbox}[sep=0.85ex,leftskip=0.6em,rightskip=0.6em,vmode]{block body}%
+    \usebeamerfont{block body}%
+}
+\setbeamertemplate{block end}{\end{beamercolorbox}\vskip0.15em}
+\setbeamertemplate{block alerted begin}{%
+  \par\vskip0.45em%
+  \begin{beamercolorbox}[sep=0.65ex,leftskip=0.6em,rightskip=0.6em]{block title alerted}%
+    \usebeamerfont*{block title}\insertblocktitle%
+  \end{beamercolorbox}%
+  \nointerlineskip%
+  \begin{beamercolorbox}[sep=0.85ex,leftskip=0.6em,rightskip=0.6em,vmode]{block body alerted}%
+    \usebeamerfont{block body}%
+}
+\setbeamertemplate{block alerted end}{\end{beamercolorbox}\vskip0.15em}
+\setbeamertemplate{block example begin}{%
+  \par\vskip0.45em%
+  \begin{beamercolorbox}[sep=0.65ex,leftskip=0.6em,rightskip=0.6em]{block title example}%
+    \usebeamerfont*{block title}\insertblocktitle%
+  \end{beamercolorbox}%
+  \nointerlineskip%
+  \begin{beamercolorbox}[sep=0.85ex,leftskip=0.6em,rightskip=0.6em,vmode]{block body example}%
+    \usebeamerfont{block body}%
+}
+\setbeamertemplate{block example end}{\end{beamercolorbox}\vskip0.15em}
+
+\newcommand{\makepart}[1]{ % For convenience
+\part{#1} \frame{\partpage}
+}
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Figures
+\RequirePackage{booktabs}
+\RequirePackage{colortbl}
+\RequirePackage{ragged2e}
+\RequirePackage{schemabloc}
+\RequirePackage{caption}
+\RequirePackage{subcaption}
+\RequirePackage{tabularx}
+\RequirePackage{array}
+\RequirePackage{multirow}
+\RequirePackage[%
+  natbib=true, backend=biber,%
+  style=apa, isbn=false,url=false,uniquename=false%, useprefix=true%
+  ]{biblatex}
+\addbibresource{references.bib}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Figures
+\RequirePackage{wrapfig}
+\RequirePackage{pgfplots}
+\RequirePackage{graphicx}
+\RequirePackage{adjustbox}
+\RequirePackage{environ}
+\pgfplotsset{compat=1.18}
+
+\makeatletter
+\newsavebox{\measure@tikzpicture}
+\NewEnviron{scaletikzpicturetowidth}[1]{%
+  \def\tikz@width{#1}%
+  \def\tikzscale{1}\begin{lrbox}{\measure@tikzpicture}%
+  \BODY
+  \end{lrbox}%
+  \pgfmathparse{#1/\wd\measure@tikzpicture}%
+  \edef\tikzscale{\pgfmathresult}%
+  \BODY
+}
+\makeatother
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Maths
+\RequirePackage{textcomp}
+\RequirePackage{amsmath}
+\RequirePackage{amsthm}
+\RequirePackage{mathtools}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\setbeamertemplate{theorems}[numbered] % to number
+
+\theoremstyle{definition}
+\newtheorem{fact}{Fact}[section]
+\newtheorem{examp}{Example}[section]
+
+\theoremstyle{plain}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{assumption}{Assumption}
+
+\providecommand{\H}{\mathscr{H}}
+\providecommand{\E}{\mathbb{E}}
+\makeatletter
+\def\munderbar#1{\underline{\sbox\tw@{$#1$}\dp\tw@\z@\box\tw@}}
+\makeatother
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
