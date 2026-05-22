@@ -177,6 +177,18 @@
 \addbibresource{references.bib}
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
 
+% Fix bibliography alignment: uniform indent, no hanging indent
+\AtBeginDocument{%
+  \defbibenvironment{bibliography}
+    {\list{}{%
+       \leftmargin1.2em
+       \itemindent0pt
+       \itemsep\bibitemsep
+       \parsep\bibparsep}}
+    {\endlist}
+    {\item}
+}
+
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -280,5 +292,17 @@
 \setbeamertemplate{definition end}{\end{beamercolorbox}\vskip0.1em}
 
 \setbeamertemplate{qed symbol}{\textcolor{proofqed}{\small$\blacksquare$}}
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Background watermark (RUC logo)
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\setbeamertemplate{background}{%
+  \begin{tikzpicture}
+    \useasboundingbox (0,0) rectangle (\paperwidth,\paperheight);
+    \node[opacity=1, anchor=center]
+      at (\paperwidth/2, \paperheight/2)
+      {\includegraphics[width=0.3\paperwidth, keepaspectratio]{logo-RUC.png}};
+  \end{tikzpicture}%
+}
 
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
