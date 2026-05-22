@@ -208,7 +208,6 @@
 \RequirePackage{textcomp}
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
-\RequirePackage{amsthm}
 \RequirePackage{mathtools}
 \RequirePackage{bm} % bold math symbols
 
@@ -236,55 +235,63 @@
 \makeatother
 
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-% Theorem environments: amsthm styles matching NeurIPS paper aesthetics
+% Theorem environments: colored beamer boxes
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \definecolor{theoremfg}{HTML}{1F4E79}
+\definecolor{theorembg}{HTML}{F0F4F8}
 \definecolor{definitionfg}{HTML}{2D5A3D}
+\definecolor{definitionbg}{HTML}{F0F7F2}
 \definecolor{proofqed}{HTML}{999999}
 
-\newtheoremstyle{nipsplain}
-  {0.5em}   % space above
-  {0.5em}   % space below
-  {\itshape}% body font (italic for theorems)
-  {0pt}     % indent
-  {\bfseries\color{theoremfg}} % head font
-  {.}       % punctuation
-  {0.5em}   % space after head
-  {\thmname{#1}~\thmnumber{#2}\thmnote{ (#3)}} % head spec
+\setbeamercolor{theorem title}{fg=theoremfg,bg=theorembg}
+\setbeamercolor{theorem body}{fg=nipsblack,bg=theorembg}
+\setbeamercolor{definition title}{fg=definitionfg,bg=definitionbg}
+\setbeamercolor{definition body}{fg=nipsblack,bg=definitionbg}
 
-\newtheoremstyle{nipsdefinition}
-  {0.5em}
-  {0.5em}
-  {\normalfont}% body font (upright for definitions)
-  {0pt}
-  {\bfseries\color{definitionfg}}
-  {.}
-  {0.5em}
-  {\thmname{#1}~\thmnumber{#2}\thmnote{ (#3)}}
+\setbeamerfont{theorem title}{family=\rmfamily,series=\bfseries,size=\normalsize}
+\setbeamerfont{theorem body}{family=\rmfamily,size=\small}
+\setbeamerfont{definition title}{family=\rmfamily,series=\bfseries,size=\normalsize}
+\setbeamerfont{definition body}{family=\rmfamily,size=\small}
 
-\newtheoremstyle{nipsremark}
-  {0.3em}
-  {0.3em}
-  {\normalfont}
-  {0pt}
-  {\itshape\color{nipsgray}}
-  {.}
-  {0.5em}
-  {\thmname{#1}~\thmnumber{#2}\thmnote{ (#3)}}
+\setbeamertemplate{theorem begin}{%
+  \par\vskip0.3em%
+  \begin{beamercolorbox}[sep=0.55ex,leftskip=0.6em,rightskip=0.6em,rounded=true]{theorem title}%
+    \usebeamerfont*{theorem title}%
+    \inserttheoremname\ \inserttheoremnumber
+    \ifx\inserttheoremaddition\empty\else\ (\inserttheoremaddition)\fi%
+  \end{beamercolorbox}%
+  \nointerlineskip
+  \begin{beamercolorbox}[sep=0.75ex,leftskip=0.6em,rightskip=0.6em,rounded=true,vmode]{theorem body}%
+    \usebeamerfont{theorem body}%
+}
+\setbeamertemplate{theorem end}{\end{beamercolorbox}\vskip0.1em}
 
-\theoremstyle{nipsplain}
+\setbeamertemplate{definition begin}{%
+  \par\vskip0.3em%
+  \begin{beamercolorbox}[sep=0.55ex,leftskip=0.6em,rightskip=0.6em,rounded=true]{definition title}%
+    \usebeamerfont*{definition title}%
+    \inserttheoremname\ \inserttheoremnumber
+    \ifx\inserttheoremaddition\empty\else\ (\inserttheoremaddition)\fi%
+  \end{beamercolorbox}%
+  \nointerlineskip
+  \begin{beamercolorbox}[sep=0.75ex,leftskip=0.6em,rightskip=0.6em,rounded=true,vmode]{definition body}%
+    \usebeamerfont{definition body}%
+}
+\setbeamertemplate{definition end}{\end{beamercolorbox}\vskip0.1em}
+
+\setbeamertemplate{qed symbol}{\textcolor{proofqed}{\small$\blacksquare$}}
+
+\theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}{Lemma}[section]
 \newtheorem{proposition}{Proposition}[section]
 \newtheorem{corollary}{Corollary}[section]
 
-\theoremstyle{nipsdefinition}
+\theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 \newtheorem{assumption}{Assumption}[section]
 
-\theoremstyle{nipsremark}
+\theoremstyle{remark}
 \newtheorem{remark}{Remark}[section]
-
-\renewcommand{\qedsymbol}{\textcolor{proofqed}{\small$\blacksquare$}}
 
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
