@@ -51,8 +51,12 @@
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % Outline / Table of Contents
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-\begin{frame}{Outline}
+\begin{frame}{Part I: Basic Features}
     \tableofcontents[part=1]
+\end{frame}
+
+\begin{frame}{Part II: Advanced Features}
+    \tableofcontents[part=2]
 \end{frame}
 
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -145,20 +149,37 @@
 \end{frame}
 
 \subsection{Mathematics}
-\begin{frame}{Mathematics}{Equations and Theorems}
+\begin{frame}{Mathematics}{Equations, Theorems and Proofs}
+\small
 \begin{block}{Key Equation}
     The standard diffusion forward process:
     \[
-        q(z_t \mid z_0) = \mathcal{N}(\alpha_t z_0, \sigma_t^2 \mathbf{I})
+        q(\mathbf{z}_t \mid \mathbf{z}_0) = \mathcal{N}(\alpha_t \mathbf{z}_0, \sigma_t^2 \mathbf{I}), \quad \mathbf{z}_0 \in \R^d.
     \]
 \end{block}
 
-\begin{theorem}[Example Theorem]
-    Let $X$ be a random variable. Then $\E[X]$ exists if $\E[|X|] < \infty$.
-\end{theorem}
+\vspace{-0.2cm}
+\begin{columns}[T,onlytextwidth]
+    \column{0.48\textwidth}
+    \begin{theorem}[Fenchel-Young Inequality]
+        For any $x, y \in \R^n$ and convex $f$:
+        \[
+            f(x) + f^*(y) \geq \langle x, y \rangle.
+        \]
+    \end{theorem}
 
+    \column{0.48\textwidth}
+    \begin{definition}[Lipschitz Smoothness]
+        A function $f: \R^d \to \R$ is $L$-smooth if
+        \[
+            \|\nabla f(x) - \nabla f(y)\| \leq L\|x - y\|.
+        \]
+    \end{definition}
+\end{columns}
+
+\vspace{0.1cm}
 \begin{proof}
-    This follows directly from the definition of expectation.
+    By Jensen's inequality and the convexity of $f$, we have $f\bigl(\E[X]\bigr) \leq \E[f(X)]$ for any random variable $X$. \qedhere
 \end{proof}
 \end{frame}
 
